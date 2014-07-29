@@ -10,47 +10,50 @@
 <body ng-app="ngMacro">
     <div ng-controller="macroCtrl" class="container">
         <div class="row">
-            <div class="col-sm-12"><h1>Ng-Macro</h1></div>
+            <div class="col-sm-12"><h1>{{gym}}</h1></div>
         </div>
          <div class="row">
                <div class="col-sm-8 form-group"><input type="text" class="form-control" id="user_name" ng-model="user.name" placeholder="What's your name?"></div>
-               <div class="col-sm-4 form-group"><input type="text" class="form-control" id="user_age" ng-model="user.age" placeholder="What's your age?"></div>
-            </div>
-            <div class="row">
-               <div class="col-sm-4 form-group">
-                  <div class="input-group">
-                     <input type="text" class="form-control" id="user_height" ng-model="user.height" placeholder="What's your height?">
-                     <span class="input-group-addon">cm</span>
-                  </div>
-               </div>
-               <div class="col-sm-4 form-group">
+                <div class="col-sm-4 form-group">
                   <div class="input-group">
                      <input type="text" class="form-control"  id="user_weight" ng-model="user.weight" placeholder="What's your weight?">
-                     <span class="input-group-addon">kg</span>
-                  </div>
-               </div>
-               <div class="col-sm-4 form-group">
-                  <div class="">
-                     <select name="" id="user_sex" ng-model="user.sex" class="form-control form-control margin-zero">
-                        <option value="">what is your sex?</option>
-                        <option value="male">Male</option>
-                        <option value="female">female</option>
-                     </select>
+                     <span class="input-group-addon">lbs</span>
                   </div>
                </div>
             </div>
+    
             <div class="row">
                <div class="col-sm-12">
                   <p class="bg-primary kcal-flash">
-                  <b>&nbsp;{{getName(user.name)}}&nbsp;Basic Metabolic Rate: &nbsp; </b>&nbsp; {{ getMetaRate()}}
+                  <b>&nbsp;{{getName(user.name)}}&nbsp;Fat Loss Plan
                   </p>
                </div>
             </div>
+            <div class="row">
+              <div class="col-sm-6 form-group">
+                <label class="sr-only">
+                  Current Bodyfat %
+                </label>
+                <input type="text" class="form-control" placeholder="Your current bodyfat %" ng-model="user.currentFatPercentage">
+              </div>
+              <div class="col-sm-6 form-group">
+                <label class="sr-only">
+                  Target Weight
+                </label>
+                <input type="text" class="form-control" placeholder="Your target weight (lbs)" ng-model="user.targetWeight">
+              </div>
+            </div>
              <div class="row">
-                <div class="col-sm-12">
+                <div class="col-sm-6 form-group">
                     <select name="" id="" class="form-control" ng-model="user.activityLevel" ng-change="{{updateNutrition()}}">
-                        <option value="">Select you Activity Level</option>
-                        <option ng-repeat="activityLevel in activityLevels" value="{{activityLevel.value}}">{{activityLevel.title}} ({{activityLevel.description}})</option>
+                        <option value="">How Active is your Job</option>
+                        <option ng-repeat="activityLevel in activityLevels" value="{{activityLevel.value}}">{{activityLevel.title}} </option>
+                    </select>
+                </div>
+                <div class="col-sm-6 form-group">
+                    <select name="" id="" class="form-control" ng-model="user.gymLevel" ng-change="{{updateNutrition()}}">
+                        <option value="">How Much do you Work out</option>
+                        <option ng-repeat="gymLevel in gymLevels" value="{{gymLevel.value}}">{{gymLevel.title}} </option>
                     </select>
                 </div>
             </div>
@@ -59,32 +62,36 @@
             <div class="row">
                 <div class="col-sm-12">
                     <table class="table table-bordered">
-                        <thead>
+                        <thead class="bold-th">
                             <th></th>
                               <td ng-repeat="goal in goals">{{goal.title}}</td>
                         </thead>
                         <tbody>
                             <tr>
                                 <td>Calories:</td>
-                                <td ng-repeat="goal in goals">{{goal.calories | number:0}}</td>
+                                <td ng-repeat="goal in goals">{{goal.calories | number:0}}g</td>
                             </tr>
                             <tr>
                                 <td>Protien:</td>
-                                <td ng-repeat="goal in goals">{{goal.protein | number:0}}</td>
+                                <td ng-repeat="goal in goals">{{goal.protein | number:0}}g</td>
                             </tr>
                             <tr>
                                 <td>Fats:</td>
-                                <td ng-repeat="goal in goals">{{goal.fats | number:0}}</td>
+                                <td ng-repeat="goal in goals">{{goal.fats | number:0}}g</td>
                             </tr>
                             <tr>
                                 <td>Carbs:</td>
-                                <td ng-repeat="goal in goals">{{goal.carbs | number:0}}</td>
+                                <td ng-repeat="goal in goals">{{goal.carbs | number:0}}g</td>
                             </tr>
                         </tbody>
                     </table>
                 </div>
             </div>
+        <div class="footer ng-scope">
+          <p><span class="glyphicon glyphicon-heart"></span> Built By Jonnie.io</p>
+        </div>
     </div>
+    
     <!-- Dependencies-->
     <script src="vendor/jquery/jquery.min.js"></script>
     <script src="vendor/bootstrap/js/bootstrap.min.js"></script>

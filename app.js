@@ -1,96 +1,83 @@
 var app = angular.module('ngMacro', []);
 app.controller('macroCtrl', function ($scope){
+	$scope.gym = "Pro Fitness"
     $scope.user = { };
 
     $scope.goals = {
-	    current: {
+	   /* current: {
 	        title:"Mainteance"
 	        ,calories: 0
 	        ,protein: 0
 	        ,fats: 0
 	        ,carbs:0
 	    }
-	    ,loss: {
+	    ,
+	    */loss: {
 	        title:"Fat Loss"
 	        ,calories: 0
 	        ,protein: 0
 	        ,fats: 0
 	        ,carbs:0
 	    }
-	    ,gain:{
+	   /* ,gain:{
 	        title:"Muscle Gain"
 	        ,calories: 0
 	        ,protein: 0
+
+
+
+
+	        if you have a relatively active job (think postman, bin/garbage man, etc.) or 
+	        you have a sedentary job but train in ProFitness Gym Fat Ladies Loss Groups 2 to 3 times per week
 	        ,fats: 0
 	        ,carbs:0
-	    }
+	    }*/
 	};
 
 	$scope.activityLevels = [{
-	        title: "Little or No Exercise"
-	        ,description: "You are Lazy and avoid exercise"
-	        ,value: 1.2
+	        title: "Sedentary Job"
+	        ,description: "I sit most of the day"
+	        ,value: 10
 	    }
 	    ,{
-	        title: "Light Exercise"
-	        ,description: "Exercise 1-3 times a week"
-	        ,value: 1.375
-	    }
-	    ,{
-	        title: "Moderate Exercise"
-	        ,description: "Exercise 3-5 times a week"
-	        ,value: 1.55
-	    }
-	    ,{
-	        title: "Heavey Exercise"
-	        ,description: "You Exercise 6-7 times a week"
-	        ,value: 1.725
-	    }
-	    ,{
-	        title: "Professional Athlete"
-	        ,description: "You Exercise approx 2 times a Day"
-	        ,value: 1.9
+	        title: "Active Job "
+	        ,description: "e.g. postman, bin/garbage man, etc.."
+	        ,value: 11
 	    }
 	];
 
+	$scope.gymLevels = [{
+	        title: "1-2 x per week"
+	        ,description: ""
+	        ,value: 1
+	    }
+	    ,{
+	         title: "2-3 x per week"
+	        ,description: ""
+	        ,value : 2
+	    }
+	    ,{
+	         title: "4-6 x per week"
+	        ,description: ""
+	        ,value: 3
+	    }
+	];
 
-    $scope.getMetaRate = function(){
-
-		var meta; 
-		if($scope.user.sex === "male"){
-			meta = (88.362 + (13.397 * parseFloat(  $scope.user.weight) ) 
-					+(5.799 * parseFloat(  $scope.user.height) )
-					-(5.677 * parseFloat(  $scope.user.age) ) || 0 ); 
-					
-		}else if($scope.user.sex === "female"){
-			meta = (447.593 + (9.247 * parseFloat(  $scope.user.weight) )
-					+(3.098 * parseFloat(  $scope.user.height) )
-					-(4.33 * parseFloat(  $scope.user.age) ) || 0 );
-		}
-		else{ meta = null;}
-
-		$scope.user.bmr= meta;
-
-		return (!isNaN(meta) && (meta!=null)) ? parseFloat(meta).toFixed(2) : "Please Fill Out the above Form";
-
-	};
 	$scope.updateNutrition=function(){
-	    if(($scope.user.sex === "male" || $scope.user.sex === "female") && $scope.user.weight>0 && $scope.user.height>0 && $scope.user.age>0 && $scope.user.activityLevel>0){
-	        $scope.goals.current.calories = parseFloat($scope.user.bmr * $scope.user.activityLevel)|| 0;
-	        $scope.goals.loss.calories = $scope.goals.current.calories * 0.85 || 0;
-	        $scope.goals.gain.calories = $scope.goals.current.calories * 1.15 || 0;
+		console.log('updateNutrition')
+	    if( $scope.user.weight>0 && $scope.user.activityLevel>0 && $scope.user.gymLevel >0){
 
-	        $scope.goals.current.protein = $scope.user.weight*2.204 || 0;
-	        $scope.goals.loss.protein = $scope.user.weight*2.204 || 0;
-	        $scope.goals.gain.protein = $scope.user.weight*2.204*1.5 || 0;
 
-	        $scope.goals.current.carbs = ($scope.goals.current.calories*0.3)/4 || 0; 
-	        $scope.goals.loss.carbs = ($scope.goals.loss.calories*0.15)/4 || 0;
-	        $scope.goals.gain.carbs = ($scope.goals.gain.calories*0.3)/4 || 0;
+	    	console.log('weight', $scope.user.weight);
+	    	console.log('activityLevel', $scope.user.activityLevel);
+	        $scope.goals.loss.calories = parseFloat($scope.user.weight * (parseFloat($scope.user.activityLevel) + parseFloat($scope.user.gymLevel))) || 0;
 
-	        $scope.goals.current.fats = ($scope.goals.current.calories -($scope.goals.current.protein*4)-($scope.goals.current.carbs*4))/9 || 0;
-	        $scope.goals.loss.fats = ($scope.goals.loss.calories -($scope.goals.loss.protein*4)-($scope.goals.loss.carbs*4))/9 || 0;
-	        $scope.goals.gain.fats = ($scope.goals.gain.calories -($scope.goals.gain.protein*4)-($scope.goals.gain.carbs*4))/9 || 0;
+	        $scope.goals.loss.protein = parseFloat($scope.user.weight*0.9 )|| 0;
+ 
+	        $scope.goals.loss.fats = parseFloat($scope.user.weight*0.4) || 0;
+
+	        $scope.goals.loss.carbs = ($scope.goals.loss.calories -( ($scope.goals.loss.protein * 4) + ($scope.goals.loss.fats * 9) ) )|| 0;
+
 	    }
 	}
 
