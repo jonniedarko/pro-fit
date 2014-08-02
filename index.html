@@ -44,18 +44,13 @@
               </div>
             </div>
              <div class="row">
-                <div class="col-sm-6 form-group">
+                <div class="col-sm-12 form-group">
                     <select name="" id="" class="form-control" ng-model="user.activityLevel" ng-change="{{updateNutrition()}}">
-                        <option value="">How Active is your Job</option>
+                        <option value="">what was your ProFitness Ireland nutritional evaluation score?</option>
                         <option ng-repeat="activityLevel in activityLevels" value="{{activityLevel.value}}">{{activityLevel.title}} </option>
                     </select>
                 </div>
-                <div class="col-sm-6 form-group">
-                    <select name="" id="" class="form-control" ng-model="user.gymLevel" ng-change="{{updateNutrition()}}">
-                        <option value="">How Much do you Work out</option>
-                        <option ng-repeat="gymLevel in gymLevels" value="{{gymLevel.value}}">{{gymLevel.title}} </option>
-                    </select>
-                </div>
+  
             </div>
             <div class="row" style="padding:10px;">
             </div>

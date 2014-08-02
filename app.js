@@ -35,42 +35,41 @@ app.controller('macroCtrl', function ($scope){
 	};
 
 	$scope.activityLevels = [{
-	        title: "Sedentary Job"
-	        ,description: "I sit most of the day"
-	        ,value: 10
+	        title: "I train once a week"
+	        ,description: "(1)"
+	        ,value: 11
 	    }
 	    ,{
-	        title: "Active Job "
-	        ,description: "e.g. postman, bin/garbage man, etc.."
-	        ,value: 11
+	        title: "I train twice a week"
+	        ,description: "(2)"
+	        ,value: 12
+	    }
+	    ,{
+	        title: "I train three a week"
+	        ,description: "(3)"
+	        ,value: 13
+	    }
+	    ,{
+	        title: "I train four times a week"
+	        ,description: "(4)"
+	        ,value: 14
+	    }
+	    ,{
+	        title: "I train five or more times a week"
+	        ,description: " (5+)"
+	        ,value: 15
 	    }
 	];
 
-	$scope.gymLevels = [{
-	        title: "1-2 x per week"
-	        ,description: ""
-	        ,value: 1
-	    }
-	    ,{
-	         title: "2-3 x per week"
-	        ,description: ""
-	        ,value : 2
-	    }
-	    ,{
-	         title: "4-6 x per week"
-	        ,description: ""
-	        ,value: 3
-	    }
-	];
 
 	$scope.updateNutrition=function(){
 		console.log('updateNutrition')
-	    if( $scope.user.weight>0 && $scope.user.activityLevel>0 && $scope.user.gymLevel >0){
+	    if( $scope.user.weight>0 && $scope.user.activityLevel>0 ){
 
 
 	    	console.log('weight', $scope.user.weight);
 	    	console.log('activityLevel', $scope.user.activityLevel);
-	        $scope.goals.loss.calories = parseFloat($scope.user.weight * (parseFloat($scope.user.activityLevel) + parseFloat($scope.user.gymLevel))) || 0;
+	        $scope.goals.loss.calories = parseFloat($scope.user.weight * parseFloat($scope.user.activityLevel)) || 0;
 
 	        $scope.goals.loss.protein = parseFloat($scope.user.weight*0.9 )|| 0;
  
