@@ -62,6 +62,7 @@ app.controller('macroCtrl', function ($scope){
 	];
 
 
+
 	$scope.updateNutrition=function(){
 		console.log('updateNutrition')
 	    if( $scope.user.weight>0 && $scope.user.activityLevel>0 ){
