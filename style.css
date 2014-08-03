@@ -30,3 +30,13 @@ thead.bold-th {
 #target_weight{
 	width:100% !important;
 }
+
+a.jonnie_href{
+	padding-top: 19px;
+color: #777;
+text-align: right;
+}
+a.jonnie_href:hover{
+	color: #428bca;
+	text-decoration: none;
+}
