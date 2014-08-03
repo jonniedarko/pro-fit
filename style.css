@@ -19,14 +19,14 @@ thead.bold-th {
 	background-color: #000000;
 }
 #user_name{
-	max-width:none !important;
+	width:100% !important;
 }
 #macro-Container{
 	padding-right: 50px;
 }
 #user_fatpercent{
-	max-width:none !important;
+	width:100% !important;
 }
 #target_weight{
-	max-width:none !important;
+	width:100% !important;
 }

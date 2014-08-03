@@ -7,10 +7,10 @@
     
 </head>
 <body>
-<div ng-app="ngMacro">
+<div ng-app="ngMacro" >
   <link rel="stylesheet" href="https://rawgithub.com/jonniedarko/pro-fit/master/vendor/bootstrap/css/bootstrap.min.css">
   <link rel="stylesheet" href="https://rawgithub.com/jonniedarko/pro-fit/master/style.css">
-    <div ng-controller="macroCtrl" class="container">
+    <div ng-controller="macroCtrl" id="macro-Coidntainer" class="container">
         <div class="row">
             <div class="col-sm-12"><h1>{{gym}}</h1></div>
         </div>
@@ -42,13 +42,13 @@
                 <label class="sr-only">
                   Current Bodyfat %
                 </label>
-                <input type="text" class="form-control" placeholder="Your current bodyfat %" ng-model="user.currentFatPercentage">
+                <input type="text" class="form-control" id="user_fatpercent" placeholder="Your current bodyfat %" ng-model="user.currentFatPercentage">
               </div>
               <div class="col-sm-6 form-group">
                 <label class="sr-only">
                   Target Weight
                 </label>
-                <input type="text" class="form-control" placeholder="Your target weight (lbs)" ng-model="user.targetWeight">
+                <input type="text" class="form-control" id="target_weight" placeholder="Your target weight (lbs)" ng-model="user.targetWeight">
               </div>
             </div>
              <div class="row">
@@ -58,7 +58,7 @@
                         <option ng-repeat="activityLevel in activityLevels" value="{{activityLevel.value}}">{{activityLevel.title}} </option>
                     </select>
                 </div>
-                
+
             </div>
             <div class="row" style="padding:10px;">
             </div>
