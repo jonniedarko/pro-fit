@@ -35,28 +35,28 @@ app.controller('macroCtrl', function ($scope){
 	};
 
 	$scope.activityLevels = [{
-	        title: "I train once a week"
-	        ,description: "(1)"
+	        title: "1"
+	        ,description: ""
 	        ,value: 11
 	    }
 	    ,{
-	        title: "I train twice a week"
-	        ,description: "(2)"
+	        title: "2"
+	        ,description: ""
 	        ,value: 12
 	    }
 	    ,{
-	        title: "I train three a week"
-	        ,description: "(3)"
+	        title: "3"
+	        ,description: ""
 	        ,value: 13
 	    }
 	    ,{
-	        title: "I train four times a week"
-	        ,description: "(4)"
+	        title: "4"
+	        ,description: ""
 	        ,value: 14
 	    }
 	    ,{
-	        title: "I train five or more times a week"
-	        ,description: " (5+)"
+	        title: "5"
+	        ,description: ""
 	        ,value: 15
 	    }
 	];
