@@ -76,7 +76,7 @@ app.controller('macroCtrl', function ($scope){
  
 	        $scope.goals.loss.fats = parseFloat($scope.user.weight*0.4) || 0;
 
-	        $scope.goals.loss.carbs = ($scope.goals.loss.calories -( ($scope.goals.loss.protein * 4) + ($scope.goals.loss.fats * 9) ) )|| 0;
+	        $scope.goals.loss.carbs = ($scope.goals.loss.calories -( ($scope.goals.loss.protein * 4) + ($scope.goals.loss.fats * 9) ) )/4|| 0;
 
 	    }
 	}
