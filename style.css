@@ -21,8 +21,9 @@ thead.bold-th {
 #user_name{
 	width:100% !important;
 }
-#macro-Container{
+#macro-Coidntainer{
 	padding-right: 50px;
+	max-width:1100px;
 }
 #user_fatpercent{
 	width:100% !important;
